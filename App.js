@@ -33,9 +33,9 @@ export default class App extends React.Component {
     } catch (e) {
       console.log("error", e)
     }
-  }
-  
-  
+  };
+
+
   signOut() {
     this.state = {
       signedIn: false,
@@ -43,13 +43,13 @@ export default class App extends React.Component {
       photoUrl: ""
     }
   }
-  
+
   render() {
     return (
       <View style={styles.container}>
         {this.state.signedIn ? (
-          <HomeScreen 
-            name={this.state.name} 
+          <HomeScreen
+            name={this.state.name}
             photoUrl={this.state.photoUrl} />
         ) : (
           <LoginScreen signIn={this.signIn} />
@@ -66,7 +66,7 @@ const LoginScreen = props => {
       <Button title="Sign in with Google" onPress={() => props.signIn()} />
     </View>
   )
-}
+};
 
 const HomeScreen = props => {
   return (
@@ -76,7 +76,7 @@ const HomeScreen = props => {
       <Button title="Sign out" onPress={() => props.signOut()} />
     </View>
   )
-}
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -96,5 +96,4 @@ const styles = StyleSheet.create({
     borderWidth: 3,
     borderRadius: 150
   }
-})
-
+});
