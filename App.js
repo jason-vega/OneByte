@@ -1,100 +1,38 @@
-import React from "react";
-import { StyleSheet, Text, View, Image, Button } from "react-native";
-import Expo from "expo";
+import React from 'react';
+import { View, Text, Button, StyleSheet, ScrollView, TouchableHighlight } from 'react-native';
+import { createStackNavigator } from 'react-navigation';
+import { LoginScreen } from './screens/LoginScreen';
+import { HomeScreen } from './screens/HomeScreen';
+import { AddEventScreen } from './screens/AddEventScreen';
+import { DetailScreen } from './screens/DetailScreen';
+import * as firebase from 'firebase';
+
+// Initialize Firebase (redacted)
+const config = {
+  apiKey: "",
+  authDomain: "",
+  databaseURL: "",
+  projectId: "",
+  storageBucket: "",
+  messagingSenderId: ""
+};
+
+firebase.initializeApp(config);
+
+const RootStack = createStackNavigator(
+  {
+    Login: LoginScreen,
+    Home: HomeScreen,
+    AddEvent: AddEventScreen,
+    Details: DetailScreen,
+  },
+  {
+    initialRouteName: 'Login',
+  }
+);
 
 export default class App extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      signedIn: false,
-      name: "",
-      photoUrl: ""
-    }
-  }
-
-  signIn = async () => {
-    try {
-      const result = await Expo.Google.logInAsync({
-        androidClientId:
-          "997779665743-raogo7h1v0ajdqpnic7ejdqknl467rvd.apps.googleusercontent.com",
-        iosClientId:
-          "997779665743-42delghvr1al1rt8dkouttdo6qu4k7i4.apps.googleusercontent.com",
-        scopes: ["profile", "email"]
-      })
-
-      if (result.type === "success") {
-        this.setState({
-          signedIn: true,
-          name: result.user.name,
-          photoUrl: result.user.photoUrl
-        })
-      } else {
-        console.log("cancelled")
-      }
-    } catch (e) {
-      console.log("error", e)
-    }
-  };
-
-
-  signOut() {
-    this.state = {
-      signedIn: false,
-      name: "",
-      photoUrl: ""
-    }
-  }
-
   render() {
-    return (
-      <View style={styles.container}>
-        {this.state.signedIn ? (
-          <HomeScreen
-            name={this.state.name}
-            photoUrl={this.state.photoUrl} />
-        ) : (
-          <LoginScreen signIn={this.signIn} />
-        )}
-      </View>
-    )
+    return <RootStack />;
   }
 }
-
-const LoginScreen = props => {
-  return (
-    <View>
-      <Text style={styles.header}>Sign In With Google</Text>
-      <Button title="Sign in with Google" onPress={() => props.signIn()} />
-    </View>
-  )
-};
-
-const HomeScreen = props => {
-  return (
-    <View style={styles.container}>
-      <Text style={styles.header}> {props.name}</Text>
-      <Image style={styles.image} source={{ uri: props.photoUrl }} />
-      <Button title="Sign out" onPress={() => props.signOut()} />
-    </View>
-  )
-};
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center"
-  },
-  header: {
-    fontSize: 25
-  },
-  image: {
-    marginTop: 15,
-    width: 150,
-    height: 150,
-    borderColor: "rgba(0,0,0,0.2)",
-    borderWidth: 3,
-    borderRadius: 150
-  }
-});

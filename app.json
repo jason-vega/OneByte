@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "sdhacks2018",
+    "name": "SDHacks2018",
     "description": "This project is really great.",
-    "slug": "sdhacks2018",
+    "slug": "SDHacks2018",
     "privacy": "public",
     "sdkVersion": "30.0.0",
     "platforms": ["ios", "android"],
@@ -12,7 +12,7 @@
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#c0c0c0"
+      "backgroundColor": "#ffffff"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
