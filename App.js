@@ -6,16 +6,9 @@ import { HomeScreen } from './screens/HomeScreen';
 import { AddEventScreen } from './screens/AddEventScreen';
 import { DetailScreen } from './screens/DetailScreen';
 import * as firebase from 'firebase';
+import config from './auth.json';
 
-// Initialize Firebase (redacted)
-const config = {
-  apiKey: "",
-  authDomain: "",
-  databaseURL: "",
-  projectId: "",
-  storageBucket: "",
-  messagingSenderId: ""
-};
+// Initialize Firebase
 
 firebase.initializeApp(config);
 
