@@ -1,5 +1,5 @@
 # OneByte
-Code for SD Hacks 2018 project :)
+A social media app to find and advertise free and low-cost local food. Developed by Jason Vega, Sachinda Edirisooriya and David Chen at [SD Hacks 2018](https://sdhacks2018.devpost.com/).
 
 ## Prerequisites
 ### Software Tools
