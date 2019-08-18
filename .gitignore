@@ -14,3 +14,5 @@ package.json
 babel.config.js
 .expo-shared/*
 .watchmanconfig
+app.json
+auth.json
