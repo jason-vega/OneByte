@@ -7,13 +7,13 @@ import { AddEventScreen } from './screens/AddEventScreen';
 import { DetailScreen } from './screens/DetailScreen';
 import * as firebase from 'firebase';
 
-// Initialize Firebase
+// Initialize Firebase (redacted)
 const config = {
   apiKey: "",
   authDomain: "",
   databaseURL: "",
-  projectId: "";
-  storageBucket: "";
+  projectId: "",
+  storageBucket: "",
   messagingSenderId: ""
 };
 
